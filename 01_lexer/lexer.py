@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 import sys
 import ply.lex
 from datetime import datetime
@@ -80,12 +78,17 @@ def t_STRING(t):
 
 # Integer literal
 def t_INT_LITERAL(t):
-    r'-?\d{1,3}(,\d{3})*'
-    t.value = int(t.value.replace(',', ''))
+    r'-?\d{1,3}(\'\d{3})*'
+    original_value = t.value
+    t.value = t.value.replace("'", "")  # Remove thousands separators
+    if len(t.value) > 1 and t.value[0] == '-':
+        t.value = '-' + t.value[1:].replace('-', '')  # Ensure only leading '-' is kept
+    t.value = int(t.value)  # Convert string to integer
     if abs(t.value) >= 10**12:
-        print("Error: Integer value too large:", t.value)
+        print(f"line {t.lineno}: INT_LITERAL too large")
         sys.exit(1)
     return t
+
 
 # Function identifier
 def t_FUNC_IDENT(t):
