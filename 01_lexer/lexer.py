@@ -78,12 +78,13 @@ def t_STRING(t):
 
 # Integer literal
 def t_INT_LITERAL(t):
-    r'-?\d{1,3}(\'\d{3})*'
-    original_value = t.value
-    t.value = t.value.replace("'", "")  # Remove thousands separators
-    if len(t.value) > 1 and t.value[0] == '-':
-        t.value = '-' + t.value[1:].replace('-', '')  # Ensure only leading '-' is kept
-    t.value = int(t.value)  # Convert string to integer
+    r'-?(0|[1-9][0-9]{0,2}(\'[0-9]{3})*|[1-9][0-9]*|(\'[0-9]{3})+)'    
+    thousand_sep_count = t.value.count("'")
+    if thousand_sep_count > 1 or (thousand_sep_count == 1 and len(t.value) % 4 != 0):
+        print(f"line {t.lineno}: Malformed number: {t.value}")
+        sys.exit(1)
+    original_value = t.value.replace("'", "")  # Remove thousands separators
+    t.value = int(original_value)  # Convert string to integer
     if abs(t.value) >= 10**12:
         print(f"line {t.lineno}: INT_LITERAL too large")
         sys.exit(1)
