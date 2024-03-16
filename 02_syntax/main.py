@@ -7,7 +7,7 @@ from parser import parser
 def parse_arguments():
     parser = argparse.ArgumentParser(description="PostHaste Syntax Checker")
     parser.add_argument("-f", "--file", help="filename to process")
-    parser.add_argument("--who", action="store_true", help="print out student IDs and NAMEs of authors")
+    parser.add_argument('--who', action='store_true', help='print out student IDs and NAMEs of authors')
     parser.add_argument("-d", "--debug", action="store_true", help="activate debug mode in PLY")
     return parser.parse_args()
 
@@ -16,8 +16,8 @@ def main():
     args = parse_arguments()
 
     if args.who:
-        print("Student IDs and NAMEs of authors:")
-        # Print student IDs and names here
+        # Print student IDs and NAMES
+        print('152103143 Minh Hoang')
         return
 
     if args.file:
