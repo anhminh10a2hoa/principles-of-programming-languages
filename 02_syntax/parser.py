@@ -1,28 +1,27 @@
 import ply.yacc as yacc
+import ply.lex
 from lexer import tokens
-
-# Include debug flag to print debugging information
-debug = False
 
 # Helper function to print accepted symbols
 symbolnum = 0
 
 def debug_syntax(p):
     global symbolnum
-    symbolnum += 1
+    symbolnum = symbolnum + 1
     p[0] = symbolnum
     msg = ""
     for i, s in enumerate(p.slice):
         if s is not None:
-            if type(s) is tuple:
-                msg += str(s[0]) + "(" + str(p[i]) + ") "
+            if type(s) is ply.lex.LexToken:
+                msg = msg + str(s.type) + "<" + str(s.value) + "> "
             else:
-                msg += str(s) + "<" + str(p[i]) + "> "
+                msg = msg + str(s) + "(" + str(p[i]) + ") " 
         else:
-            msg += "?? "
+            msg = msg + "?? "
         if i == 0:
-            msg += ":: "
+            msg = msg + ":: "
     print(msg)
+
 
 # Grammar rules
 def p_program(p):
@@ -49,7 +48,7 @@ def p_variable_definition(p):
     debug_syntax(p)
 
 def p_function_definition(p):
-    '''function_definition : FUNCTION FUNC_IDENT LCURLY opt_formals RCURLY RETURN IDENT opt_var_defs IS statement_list END FUNCTION'''
+    '''function_definition : FUNCTION FUNC_IDENT LCURLY opt_definitions RCURLY RETURN IDENT opt_formals IS statement_list END FUNCTION'''
     debug_syntax(p)
 
 def p_procedure_definition(p):
@@ -223,4 +222,4 @@ def p_error(p):
         print("Syntax error: unexpected end of input")
 
 # Build the parser
-parser = yacc.yacc(debug=debug)
+parser = yacc.yacc()
