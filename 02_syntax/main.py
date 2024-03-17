@@ -1,7 +1,7 @@
 import sys
 import argparse
 from lexer import lexer
-from parser import parser
+from syntax_check import parser
 
 # Command-line argument parsing
 def parse_arguments():

@@ -216,10 +216,7 @@ def p_empty(p):
 
 # Error rule for syntax errors
 def p_error(p):
-    if p:
-        print(f"{p.lineno}: Syntax Error (token: '{p.value}')")
-    else:
-        print("Syntax error: unexpected end of input")
+    raise SystemExit(f"{p.lineno}: Syntax Error (token: '{p.value}')")
 
 # Build the parser
 parser = yacc.yacc()
