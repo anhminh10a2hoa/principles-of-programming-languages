@@ -59,7 +59,7 @@ def p_function_definition(p):
     debug_syntax(p)
 
 def p_procedure_definition(p):
-    '''procedure_definition : PROCEDURE PROC_IDENT LCURLY opt_formals RCURLY opt_return opt_var_defs IS statement_list END PROCEDURE'''
+    '''procedure_definition : PROCEDURE PROC_IDENT LCURLY opt_formals RCURLY opt_return_type opt_var_defs IS statement_list END PROCEDURE'''
     debug_syntax(p)
 
 def p_opt_formals_empty(p):
@@ -79,12 +79,12 @@ def p_formal_arg(p):
     '''formal_arg : IDENT COLON IDENT'''
     debug_syntax(p)
 
-def p_opt_return_empty(p):
-    '''opt_return : empty'''
+def p_opt_return_type_empty(p):
+    '''opt_return_type : empty'''
     debug_syntax(p)
 
-def p_opt_return(p):
-    '''opt_return : RETURN IDENT'''
+def p_opt_return_type(p):
+    '''opt_return_type : RETURN IDENT'''
     debug_syntax(p)
 
 
@@ -216,7 +216,10 @@ def p_empty(p):
 
 # Error rule for syntax errors
 def p_error(p):
-    raise SystemExit(f"{p.lineno}: Syntax Error (token: '{p.value}')")
+    if p:
+        raise SystemExit(f"{p.lineno}: Syntax Error (token: '{p.value}')")
+    else:
+        print("Unexpected end of input")
 
 # Build the parser
 parser = yacc.yacc()

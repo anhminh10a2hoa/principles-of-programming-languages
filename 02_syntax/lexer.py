@@ -90,15 +90,14 @@ def t_INT_LITERAL(t):
         sys.exit(1)
     return t
 
+# Procedure identifier
+def t_PROC_IDENT(t):
+    r'[A-Z][A-Z0-9_]{1,}'
+    return t
 
 # Function identifier
 def t_FUNC_IDENT(t):
     r'[A-Z][a-zA-Z0-9_]*'
-    return t
-
-# Procedure identifier
-def t_PROC_IDENT(t):
-    r'[A-Z][A-Z0-9_]{1,}'
     return t
 
 # Identifier
