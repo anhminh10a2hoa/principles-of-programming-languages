@@ -33,8 +33,7 @@ def p_opt_definitions_empty(p):
     debug_syntax(p)
 
 def p_opt_definitions(p):
-    '''opt_definitions : definitions
-                       | opt_definitions definitions'''
+    '''opt_definitions : definitions'''
     debug_syntax(p)
 
 def p_definitions(p):
@@ -48,7 +47,7 @@ def p_variable_definition(p):
     debug_syntax(p)
 
 def p_function_definition(p):
-    '''function_definition : FUNCTION FUNC_IDENT LCURLY opt_definitions RCURLY RETURN IDENT opt_formals IS statement_list END FUNCTION'''
+    '''function_definition : FUNCTION FUNC_IDENT LCURLY opt_formals RCURLY RETURN IDENT opt_formals IS statement_list END FUNCTION'''
     debug_syntax(p)
 
 def p_procedure_definition(p):
@@ -69,7 +68,7 @@ def p_formal_arg_list(p):
     debug_syntax(p)
 
 def p_formal_arg(p):
-    '''formal_arg : IDENT LSQUARE IDENT RSQUARE'''
+    '''formal_arg : IDENT COLON IDENT'''
     debug_syntax(p)
 
 def p_opt_return_empty(p):
