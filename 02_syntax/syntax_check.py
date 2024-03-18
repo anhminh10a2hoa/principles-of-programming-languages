@@ -36,18 +36,26 @@ def p_opt_definitions(p):
     '''opt_definitions : definitions'''
     debug_syntax(p)
 
+def p_variable_definition(p):
+    '''variable_definition : VAR IDENT EQ expression'''
+    debug_syntax(p)
+
 def p_definitions(p):
     '''definitions : function_definition
                    | procedure_definition
                    | variable_definition'''
     debug_syntax(p)
 
-def p_variable_definition(p):
-    '''variable_definition : VAR IDENT EQ expression'''
+def p_opt_var_defs_empty(p):
+    '''opt_var_defs : empty'''
+    debug_syntax(p)
+
+def p_opt_var_defs(p):
+    '''opt_var_defs : variable_definition opt_var_defs'''
     debug_syntax(p)
 
 def p_function_definition(p):
-    '''function_definition : FUNCTION FUNC_IDENT LCURLY opt_formals RCURLY RETURN IDENT opt_formals IS statement_list END FUNCTION'''
+    '''function_definition : FUNCTION FUNC_IDENT LCURLY opt_formals RCURLY RETURN IDENT opt_var_defs IS statement_list END FUNCTION'''
     debug_syntax(p)
 
 def p_procedure_definition(p):
@@ -79,13 +87,6 @@ def p_opt_return(p):
     '''opt_return : RETURN IDENT'''
     debug_syntax(p)
 
-def p_opt_var_defs_empty(p):
-    '''opt_var_defs : empty'''
-    debug_syntax(p)
-
-def p_opt_var_defs(p):
-    '''opt_var_defs : variable_definition'''
-    debug_syntax(p)
 
 def p_statement_list(p):
     '''statement_list : statement
