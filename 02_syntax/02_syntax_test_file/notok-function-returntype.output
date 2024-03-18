@@ -1,0 +1,5 @@
+empty(1) :: 
+opt_definitions(2) :: empty(1) 
+empty(3) :: 
+opt_formals(4) :: empty(3) 
+2:Syntax Error (token: 'is')

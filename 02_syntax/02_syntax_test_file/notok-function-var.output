@@ -1,0 +1,25 @@
+empty(1) :: 
+opt_definitions(2) :: empty(1) 
+empty(3) :: 
+opt_formals(4) :: empty(3) 
+atom(5) :: INT_LITERAL<0> 
+factor(6) :: atom(5) 
+term(7) :: factor(6) 
+simple_expr(8) :: term(7) 
+expression(9) :: simple_expr(8) 
+variable_definition(10) :: VAR<var> IDENT<xx> EQ<=> expression(9) 
+var_def_list(11) :: variable_definition(10) 
+atom(12) :: INT_LITERAL<11> 
+factor(13) :: atom(12) 
+term(14) :: factor(13) 
+simple_expr(15) :: term(14) 
+add_or_minus(16) :: MINUS<-> 
+atom(17) :: INT_LITERAL<1> 
+factor(18) :: atom(17) 
+term(19) :: factor(18) 
+simple_expr(20) :: simple_expr(15) add_or_minus(16) term(19) 
+expression(21) :: simple_expr(20) 
+variable_definition(22) :: VAR<var> IDENT<yy> EQ<=> expression(21) 
+var_def_list(23) :: var_def_list(11) variable_definition(22) 
+opt_var_defs(24) :: var_def_list(23) 
+7:Syntax Error (token: 'end')

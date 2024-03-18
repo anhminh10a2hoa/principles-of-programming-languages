@@ -1,0 +1,86 @@
+empty(1) :: 
+opt_definitions(2) :: empty(1) 
+formal_arg(3) :: IDENT<aa> LSQUARE<[> IDENT<int> RSQUARE<]> 
+formals(4) :: formal_arg(3) 
+opt_formals(5) :: formals(4) 
+empty(6) :: 
+opt_return_type(7) :: empty(6) 
+empty(8) :: 
+opt_var_defs(9) :: empty(8) 
+lvalue(10) :: IDENT<aa> 
+atom(11) :: INT_LITERAL<7> 
+factor(12) :: atom(11) 
+term(13) :: factor(12) 
+simple_expr(14) :: term(13) 
+expression(15) :: simple_expr(14) 
+rvalue(16) :: expression(15) 
+assignment(17) :: lvalue(10) EQ<=> rvalue(16) 
+statement(18) :: assignment(17) 
+statement_list(19) :: statement(18) 
+procedure_definition(20) :: PROCEDURE<procedure> PROC_IDENT<PROKKI> LCURLY<{> opt_formals(5) RCURLY<}> opt_return_type(7) opt_var_defs(9) IS<is> statement_list(19) END<end> PROCEDURE<procedure> 
+definitions(21) :: procedure_definition(20) 
+opt_definitions(22) :: opt_definitions(2) definitions(21) 
+formal_arg(23) :: IDENT<dd> LSQUARE<[> IDENT<date> RSQUARE<]> 
+formals(24) :: formal_arg(23) 
+opt_formals(25) :: formals(24) 
+empty(26) :: 
+opt_var_defs(27) :: empty(26) 
+atom(28) :: IDENT<dd> APOSTROPHE<'> IDENT<year> 
+factor(29) :: atom(28) 
+term(30) :: factor(29) 
+simple_expr(31) :: term(30) 
+add_or_minus(32) :: PLUS<+> 
+atom(33) :: INT_LITERAL<7> 
+factor(34) :: atom(33) 
+term(35) :: factor(34) 
+simple_expr(36) :: simple_expr(31) add_or_minus(32) term(35) 
+expression(37) :: simple_expr(36) 
+rvalue(38) :: expression(37) 
+function_definition(39) :: FUNCTION<function> FUNC_IDENT<Year> LCURLY<{> opt_formals(25) RCURLY<}> RETURN<return> IDENT<int> opt_var_defs(27) IS<is> rvalue(38) END<end> FUNCTION<function> 
+definitions(40) :: function_definition(39) 
+opt_definitions(41) :: opt_definitions(22) definitions(40) 
+empty(42) :: 
+opt_formals(43) :: empty(42) 
+empty(44) :: 
+opt_var_defs(45) :: empty(44) 
+atom(46) :: INT_LITERAL<3> 
+factor(47) :: atom(46) 
+term(48) :: factor(47) 
+simple_expr(49) :: term(48) 
+add_or_minus(50) :: PLUS<+> 
+atom(51) :: INT_LITERAL<3> 
+factor(52) :: atom(51) 
+term(53) :: factor(52) 
+simple_expr(54) :: simple_expr(49) add_or_minus(50) term(53) 
+add_or_minus(55) :: PLUS<+> 
+atom(56) :: INT_LITERAL<3> 
+factor(57) :: atom(56) 
+term(58) :: factor(57) 
+simple_expr(59) :: simple_expr(54) add_or_minus(55) term(58) 
+add_or_minus(60) :: PLUS<+> 
+atom(61) :: INT_LITERAL<3> 
+factor(62) :: atom(61) 
+term(63) :: factor(62) 
+simple_expr(64) :: simple_expr(59) add_or_minus(60) term(63) 
+add_or_minus(65) :: PLUS<+> 
+atom(66) :: INT_LITERAL<3> 
+factor(67) :: atom(66) 
+term(68) :: factor(67) 
+simple_expr(69) :: simple_expr(64) add_or_minus(65) term(68) 
+expression(70) :: simple_expr(69) 
+rvalue(71) :: expression(70) 
+function_definition(72) :: FUNCTION<function> FUNC_IDENT<Funktio> LCURLY<{> opt_formals(43) RCURLY<}> RETURN<return> IDENT<list> opt_var_defs(45) IS<is> rvalue(71) END<end> FUNCTION<function> 
+definitions(73) :: function_definition(72) 
+opt_definitions(74) :: opt_definitions(41) definitions(73) 
+atom(75) :: INT_LITERAL<5> 
+factor(76) :: atom(75) 
+term(77) :: factor(76) 
+simple_expr(78) :: term(77) 
+expression(79) :: simple_expr(78) 
+args(80) :: expression(79) 
+opt_args(81) :: args(80) 
+procedure_call(82) :: PROC_IDENT<PROKKI> LPAREN<(> opt_args(81) RPAREN<)> 
+statement(83) :: procedure_call(82) 
+statement_list(84) :: statement(83) 
+program(85) :: opt_definitions(74) statement_list(84) 
+syntax OK

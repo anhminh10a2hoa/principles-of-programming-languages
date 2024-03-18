@@ -1,0 +1,12 @@
+empty(1) :: 
+opt_definitions(2) :: empty(1) 
+lvalue(3) :: IDENT<date> DOT<.> IDENT<day> 
+atom(4) :: INT_LITERAL<29> 
+factor(5) :: atom(4) 
+term(6) :: factor(5) 
+simple_expr(7) :: term(6) 
+expression(8) :: simple_expr(7) 
+rvalue(9) :: expression(8) 
+assignment(10) :: lvalue(3) EQ<=> rvalue(9) 
+statement(11) :: assignment(10) 
+5:Syntax Error (token: ''')

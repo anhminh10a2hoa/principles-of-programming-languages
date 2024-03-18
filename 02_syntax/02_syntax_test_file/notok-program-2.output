@@ -1,0 +1,35 @@
+empty(1) :: 
+opt_definitions(2) :: empty(1) 
+atom(3) :: INT_LITERAL<-345> 
+factor(4) :: atom(3) 
+term(5) :: factor(4) 
+simple_expr(6) :: term(5) 
+expression(7) :: simple_expr(6) 
+variable_definition(8) :: VAR<var> IDENT<ab> EQ<=> expression(7) 
+definitions(9) :: variable_definition(8) 
+opt_definitions(10) :: opt_definitions(2) definitions(9) 
+empty(11) :: 
+opt_formals(12) :: empty(11) 
+empty(13) :: 
+opt_return_type(14) :: empty(13) 
+empty(15) :: 
+opt_var_defs(16) :: empty(15) 
+lvalue(17) :: IDENT<aa> 
+atom(18) :: INT_LITERAL<7> 
+factor(19) :: atom(18) 
+term(20) :: factor(19) 
+simple_expr(21) :: term(20) 
+expression(22) :: simple_expr(21) 
+rvalue(23) :: expression(22) 
+assignment(24) :: lvalue(17) EQ<=> rvalue(23) 
+statement(25) :: assignment(24) 
+statement_list(26) :: statement(25) 
+procedure_definition(27) :: PROCEDURE<procedure> PROC_IDENT<PR> LCURLY<{> opt_formals(12) RCURLY<}> opt_return_type(14) opt_var_defs(16) IS<is> statement_list(26) END<end> PROCEDURE<procedure> 
+definitions(28) :: procedure_definition(27) 
+opt_definitions(29) :: opt_definitions(10) definitions(28) 
+atom(30) :: INT_LITERAL<17> 
+factor(31) :: atom(30) 
+term(32) :: factor(31) 
+simple_expr(33) :: term(32) 
+expression(34) :: simple_expr(33) 
+Unexpected end of input

@@ -1,0 +1,60 @@
+empty(1) :: 
+opt_definitions(2) :: empty(1) 
+atom(3) :: DATE_LITERAL<2024-05-01> 
+factor(4) :: atom(3) 
+term(5) :: factor(4) 
+simple_expr(6) :: term(5) 
+expression(7) :: simple_expr(6) 
+variable_definition(8) :: VAR<var> IDENT<wappu> EQ<=> expression(7) 
+definitions(9) :: variable_definition(8) 
+opt_definitions(10) :: opt_definitions(2) definitions(9) 
+atom(11) :: IDENT<wappu> 
+factor(12) :: atom(11) 
+term(13) :: factor(12) 
+simple_expr(14) :: term(13) 
+add_or_minus(15) :: MINUS<-> 
+empty(16) :: 
+opt_args(17) :: empty(16) 
+function_call(18) :: FUNC_IDENT<Today> LPAREN<(> opt_args(17) RPAREN<)> 
+atom(19) :: function_call(18) 
+factor(20) :: atom(19) 
+term(21) :: factor(20) 
+simple_expr(22) :: simple_expr(14) add_or_minus(15) term(21) 
+expression(23) :: simple_expr(22) 
+variable_definition(24) :: VAR<var> IDENT<diff> EQ<=> expression(23) 
+definitions(25) :: variable_definition(24) 
+opt_definitions(26) :: opt_definitions(10) definitions(25) 
+printitem(27) :: STRING<WAPPU!!!> 
+printlist(28) :: printitem(27) 
+print_statement(29) :: PRINT<print> printlist(28) 
+statement(30) :: print_statement(29) 
+statement_list(31) :: statement(30) 
+atom(32) :: INT_LITERAL<0> 
+factor(33) :: atom(32) 
+term(34) :: factor(33) 
+simple_expr(35) :: term(34) 
+expression(36) :: simple_expr(35) 
+relation_op(37) :: LT<<> 
+atom(38) :: IDENT<diff> 
+factor(39) :: atom(38) 
+term(40) :: factor(39) 
+simple_expr(41) :: term(40) 
+expression(42) :: expression(36) relation_op(37) simple_expr(41) 
+atom(43) :: IDENT<diff> 
+factor(44) :: atom(43) 
+term(45) :: factor(44) 
+simple_expr(46) :: term(45) 
+expression(47) :: simple_expr(46) 
+printitem(48) :: expression(47) 
+printlist(49) :: printitem(48) 
+printitem(50) :: STRING<days until wappu> 
+printlist(51) :: printlist(49) AMPERSAND<&> printitem(50) 
+print_statement(52) :: PRINT<print> printlist(51) 
+statement(53) :: print_statement(52) 
+statement_list(54) :: statement(53) 
+opt_otherwise(55) :: OTHERWISE<otherwise> statement_list(54) 
+unless_statement(56) :: DO<do> statement_list(31) UNLESS<unless> expression(42) opt_otherwise(55) DONE<done> 
+statement(57) :: unless_statement(56) 
+statement_list(58) :: statement(57) 
+program(59) :: opt_definitions(26) statement_list(58) 
+syntax OK

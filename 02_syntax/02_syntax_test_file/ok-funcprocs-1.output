@@ -1,0 +1,61 @@
+empty(1) :: 
+opt_definitions(2) :: empty(1) 
+empty(3) :: 
+opt_formals(4) :: empty(3) 
+empty(5) :: 
+opt_var_defs(6) :: empty(5) 
+atom(7) :: INT_LITERAL<3> 
+factor(8) :: atom(7) 
+term(9) :: factor(8) 
+simple_expr(10) :: term(9) 
+expression(11) :: simple_expr(10) 
+rvalue(12) :: expression(11) 
+function_definition(13) :: FUNCTION<function> FUNC_IDENT<Funktio> LCURLY<{> opt_formals(4) RCURLY<}> RETURN<return> IDENT<list> opt_var_defs(6) IS<is> rvalue(12) END<end> FUNCTION<function> 
+definitions(14) :: function_definition(13) 
+opt_definitions(15) :: opt_definitions(2) definitions(14) 
+formal_arg(16) :: IDENT<aa> LSQUARE<[> IDENT<int> RSQUARE<]> 
+formals(17) :: formal_arg(16) 
+opt_formals(18) :: formals(17) 
+empty(19) :: 
+opt_return_type(20) :: empty(19) 
+empty(21) :: 
+opt_var_defs(22) :: empty(21) 
+lvalue(23) :: IDENT<aa> 
+atom(24) :: INT_LITERAL<7> 
+factor(25) :: atom(24) 
+term(26) :: factor(25) 
+simple_expr(27) :: term(26) 
+expression(28) :: simple_expr(27) 
+rvalue(29) :: expression(28) 
+assignment(30) :: lvalue(23) EQ<=> rvalue(29) 
+statement(31) :: assignment(30) 
+statement_list(32) :: statement(31) 
+procedure_definition(33) :: PROCEDURE<procedure> PROC_IDENT<PROKKI> LCURLY<{> opt_formals(18) RCURLY<}> opt_return_type(20) opt_var_defs(22) IS<is> statement_list(32) END<end> PROCEDURE<procedure> 
+definitions(34) :: procedure_definition(33) 
+opt_definitions(35) :: opt_definitions(15) definitions(34) 
+formal_arg(36) :: IDENT<dd> LSQUARE<[> IDENT<date> RSQUARE<]> 
+formals(37) :: formal_arg(36) 
+opt_formals(38) :: formals(37) 
+empty(39) :: 
+opt_var_defs(40) :: empty(39) 
+atom(41) :: IDENT<dd> APOSTROPHE<'> IDENT<year> 
+factor(42) :: atom(41) 
+term(43) :: factor(42) 
+simple_expr(44) :: term(43) 
+expression(45) :: simple_expr(44) 
+rvalue(46) :: expression(45) 
+function_definition(47) :: FUNCTION<function> FUNC_IDENT<Year> LCURLY<{> opt_formals(38) RCURLY<}> RETURN<return> IDENT<int> opt_var_defs(40) IS<is> rvalue(46) END<end> FUNCTION<function> 
+definitions(48) :: function_definition(47) 
+opt_definitions(49) :: opt_definitions(35) definitions(48) 
+atom(50) :: INT_LITERAL<5> 
+factor(51) :: atom(50) 
+term(52) :: factor(51) 
+simple_expr(53) :: term(52) 
+expression(54) :: simple_expr(53) 
+args(55) :: expression(54) 
+opt_args(56) :: args(55) 
+procedure_call(57) :: PROC_IDENT<PROKKI> LPAREN<(> opt_args(56) RPAREN<)> 
+statement(58) :: procedure_call(57) 
+statement_list(59) :: statement(58) 
+program(60) :: opt_definitions(49) statement_list(59) 
+syntax OK

@@ -1,0 +1,12 @@
+empty(1) :: 
+opt_definitions(2) :: empty(1) 
+atom(3) :: INT_LITERAL<100> 
+factor(4) :: atom(3) 
+term(5) :: factor(4) 
+simple_expr(6) :: term(5) 
+expression(7) :: simple_expr(6) 
+printitem(8) :: expression(7) 
+printlist(9) :: printitem(8) 
+print_statement(10) :: PRINT<print> printlist(9) 
+statement(11) :: print_statement(10) 
+5:Syntax Error (token: '300')

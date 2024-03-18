@@ -1,0 +1,47 @@
+empty(1) :: 
+opt_definitions(2) :: empty(1) 
+empty(3) :: 
+opt_formals(4) :: empty(3) 
+atom(5) :: INT_LITERAL<0> 
+factor(6) :: atom(5) 
+term(7) :: factor(6) 
+simple_expr(8) :: term(7) 
+expression(9) :: simple_expr(8) 
+variable_definition(10) :: VAR<var> IDENT<xx> EQ<=> expression(9) 
+var_def_list(11) :: variable_definition(10) 
+atom(12) :: INT_LITERAL<11> 
+factor(13) :: atom(12) 
+term(14) :: factor(13) 
+simple_expr(15) :: term(14) 
+add_or_minus(16) :: MINUS<-> 
+atom(17) :: INT_LITERAL<1> 
+factor(18) :: atom(17) 
+term(19) :: factor(18) 
+simple_expr(20) :: simple_expr(15) add_or_minus(16) term(19) 
+expression(21) :: simple_expr(20) 
+variable_definition(22) :: VAR<var> IDENT<yy> EQ<=> expression(21) 
+var_def_list(23) :: var_def_list(11) variable_definition(22) 
+opt_var_defs(24) :: var_def_list(23) 
+atom(25) :: IDENT<xx> 
+factor(26) :: atom(25) 
+term(27) :: factor(26) 
+simple_expr(28) :: term(27) 
+add_or_minus(29) :: PLUS<+> 
+atom(30) :: IDENT<yy> 
+factor(31) :: atom(30) 
+term(32) :: factor(31) 
+simple_expr(33) :: simple_expr(28) add_or_minus(29) term(32) 
+expression(34) :: simple_expr(33) 
+rvalue(35) :: expression(34) 
+function_definition(36) :: FUNCTION<function> FUNC_IDENT<Foo> LCURLY<{> opt_formals(4) RCURLY<}> RETURN<return> IDENT<something> opt_var_defs(24) IS<is> rvalue(35) END<end> FUNCTION<function> 
+definitions(37) :: function_definition(36) 
+opt_definitions(38) :: opt_definitions(2) definitions(37) 
+atom(39) :: INT_LITERAL<0> 
+factor(40) :: atom(39) 
+term(41) :: factor(40) 
+simple_expr(42) :: term(41) 
+expression(43) :: simple_expr(42) 
+statement(44) :: RETURN<return> expression(43) 
+statement_list(45) :: statement(44) 
+program(46) :: opt_definitions(38) statement_list(45) 
+syntax OK

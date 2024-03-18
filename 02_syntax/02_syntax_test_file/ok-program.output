@@ -1,0 +1,11 @@
+empty(1) :: 
+opt_definitions(2) :: empty(1) 
+atom(3) :: INT_LITERAL<1> 
+factor(4) :: atom(3) 
+term(5) :: factor(4) 
+simple_expr(6) :: term(5) 
+expression(7) :: simple_expr(6) 
+statement(8) :: RETURN<return> expression(7) 
+statement_list(9) :: statement(8) 
+program(10) :: opt_definitions(2) statement_list(9) 
+syntax OK

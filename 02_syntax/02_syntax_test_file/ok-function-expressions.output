@@ -1,0 +1,193 @@
+empty(1) :: 
+opt_definitions(2) :: empty(1) 
+empty(3) :: 
+opt_formals(4) :: empty(3) 
+empty(5) :: 
+opt_var_defs(6) :: empty(5) 
+atom(7) :: INT_LITERAL<7> 
+factor(8) :: atom(7) 
+term(9) :: factor(8) 
+simple_expr(10) :: term(9) 
+add_or_minus(11) :: PLUS<+> 
+atom(12) :: INT_LITERAL<3> 
+factor(13) :: atom(12) 
+term(14) :: factor(13) 
+simple_expr(15) :: simple_expr(10) add_or_minus(11) term(14) 
+expression(16) :: simple_expr(15) 
+atom(17) :: LPAREN<(> expression(16) RPAREN<)> 
+factor(18) :: atom(17) 
+term(19) :: factor(18) 
+mult_or_div(20) :: DIV</> 
+atom(21) :: INT_LITERAL<2> 
+factor(22) :: atom(21) 
+term(23) :: term(19) mult_or_div(20) factor(22) 
+simple_expr(24) :: term(23) 
+expression(25) :: simple_expr(24) 
+rvalue(26) :: expression(25) 
+function_definition(27) :: FUNCTION<function> FUNC_IDENT<Aa> LCURLY<{> opt_formals(4) RCURLY<}> RETURN<return> IDENT<int> opt_var_defs(6) IS<is> rvalue(26) END<end> FUNCTION<function> 
+definitions(28) :: function_definition(27) 
+opt_definitions(29) :: opt_definitions(2) definitions(28) 
+empty(30) :: 
+opt_formals(31) :: empty(30) 
+empty(32) :: 
+opt_var_defs(33) :: empty(32) 
+atom(34) :: INT_LITERAL<7> 
+factor(35) :: atom(34) 
+term(36) :: factor(35) 
+simple_expr(37) :: term(36) 
+expression(38) :: simple_expr(37) 
+args(39) :: expression(38) 
+opt_args(40) :: args(39) 
+function_call(41) :: FUNC_IDENT<Aa> LPAREN<(> opt_args(40) RPAREN<)> 
+atom(42) :: function_call(41) 
+factor(43) :: atom(42) 
+term(44) :: factor(43) 
+simple_expr(45) :: term(44) 
+expression(46) :: simple_expr(45) 
+rvalue(47) :: expression(46) 
+function_definition(48) :: FUNCTION<function> FUNC_IDENT<Ta> LCURLY<{> opt_formals(31) RCURLY<}> RETURN<return> IDENT<int> opt_var_defs(33) IS<is> rvalue(47) END<end> FUNCTION<function> 
+definitions(49) :: function_definition(48) 
+opt_definitions(50) :: opt_definitions(29) definitions(49) 
+empty(51) :: 
+opt_formals(52) :: empty(51) 
+empty(53) :: 
+opt_var_defs(54) :: empty(53) 
+atom(55) :: DATE_LITERAL<2011-11-17> 
+factor(56) :: atom(55) 
+term(57) :: factor(56) 
+simple_expr(58) :: term(57) 
+expression(59) :: simple_expr(58) 
+rvalue(60) :: expression(59) 
+function_definition(61) :: FUNCTION<function> FUNC_IDENT<Aa> LCURLY<{> opt_formals(52) RCURLY<}> RETURN<return> IDENT<int> opt_var_defs(54) IS<is> rvalue(60) END<end> FUNCTION<function> 
+definitions(62) :: function_definition(61) 
+opt_definitions(63) :: opt_definitions(50) definitions(62) 
+empty(64) :: 
+opt_formals(65) :: empty(64) 
+empty(66) :: 
+opt_var_defs(67) :: empty(66) 
+atom(68) :: DATE_LITERAL<2022-02-22> 
+factor(69) :: atom(68) 
+term(70) :: factor(69) 
+simple_expr(71) :: term(70) 
+add_or_minus(72) :: PLUS<+> 
+atom(73) :: INT_LITERAL<10> 
+factor(74) :: atom(73) 
+term(75) :: factor(74) 
+simple_expr(76) :: simple_expr(71) add_or_minus(72) term(75) 
+expression(77) :: simple_expr(76) 
+rvalue(78) :: expression(77) 
+function_definition(79) :: FUNCTION<function> FUNC_IDENT<Aa> LCURLY<{> opt_formals(65) RCURLY<}> RETURN<return> IDENT<int> opt_var_defs(67) IS<is> rvalue(78) END<end> FUNCTION<function> 
+definitions(80) :: function_definition(79) 
+opt_definitions(81) :: opt_definitions(63) definitions(80) 
+empty(82) :: 
+opt_formals(83) :: empty(82) 
+empty(84) :: 
+opt_args(85) :: empty(84) 
+function_call(86) :: FUNC_IDENT<Today> LPAREN<(> opt_args(85) RPAREN<)> 
+atom(87) :: function_call(86) 
+factor(88) :: atom(87) 
+term(89) :: factor(88) 
+simple_expr(90) :: term(89) 
+expression(91) :: simple_expr(90) 
+variable_definition(92) :: VAR<var> IDENT<today> EQ<=> expression(91) 
+var_def_list(93) :: variable_definition(92) 
+opt_var_defs(94) :: var_def_list(93) 
+atom(95) :: IDENT<today> APOSTROPHE<'> IDENT<length> 
+factor(96) :: atom(95) 
+term(97) :: factor(96) 
+simple_expr(98) :: term(97) 
+expression(99) :: simple_expr(98) 
+rvalue(100) :: expression(99) 
+function_definition(101) :: FUNCTION<function> FUNC_IDENT<Len> LCURLY<{> opt_formals(83) RCURLY<}> RETURN<return> IDENT<int> opt_var_defs(94) IS<is> rvalue(100) END<end> FUNCTION<function> 
+definitions(102) :: function_definition(101) 
+opt_definitions(103) :: opt_definitions(81) definitions(102) 
+empty(104) :: 
+opt_formals(105) :: empty(104) 
+empty(106) :: 
+opt_var_defs(107) :: empty(106) 
+atom(108) :: INT_LITERAL<7> 
+factor(109) :: atom(108) 
+term(110) :: factor(109) 
+mult_or_div(111) :: MULT<*> 
+atom(112) :: INT_LITERAL<8> 
+factor(113) :: atom(112) 
+term(114) :: term(110) mult_or_div(111) factor(113) 
+simple_expr(115) :: term(114) 
+add_or_minus(116) :: PLUS<+> 
+atom(117) :: INT_LITERAL<2> 
+factor(118) :: atom(117) 
+term(119) :: factor(118) 
+simple_expr(120) :: simple_expr(115) add_or_minus(116) term(119) 
+add_or_minus(121) :: MINUS<-> 
+atom(122) :: INT_LITERAL<11> 
+factor(123) :: atom(122) 
+term(124) :: factor(123) 
+simple_expr(125) :: simple_expr(120) add_or_minus(121) term(124) 
+expression(126) :: simple_expr(125) 
+atom(127) :: LPAREN<(> expression(126) RPAREN<)> 
+factor(128) :: atom(127) 
+term(129) :: factor(128) 
+simple_expr(130) :: term(129) 
+expression(131) :: simple_expr(130) 
+rvalue(132) :: expression(131) 
+function_definition(133) :: FUNCTION<function> FUNC_IDENT<Aa> LCURLY<{> opt_formals(105) RCURLY<}> RETURN<return> IDENT<int> opt_var_defs(107) IS<is> rvalue(132) END<end> FUNCTION<function> 
+definitions(134) :: function_definition(133) 
+opt_definitions(135) :: opt_definitions(103) definitions(134) 
+empty(136) :: 
+opt_formals(137) :: empty(136) 
+empty(138) :: 
+opt_var_defs(139) :: empty(138) 
+atom(140) :: IDENT<aa> 
+factor(141) :: atom(140) 
+term(142) :: factor(141) 
+simple_expr(143) :: term(142) 
+expression(144) :: simple_expr(143) 
+relation_op(145) :: LT<<> 
+atom(146) :: IDENT<bb> 
+factor(147) :: atom(146) 
+term(148) :: factor(147) 
+simple_expr(149) :: term(148) 
+expression(150) :: expression(144) relation_op(145) simple_expr(149) 
+rvalue(151) :: expression(150) 
+function_definition(152) :: FUNCTION<function> FUNC_IDENT<Aa> LCURLY<{> opt_formals(137) RCURLY<}> RETURN<return> IDENT<int> opt_var_defs(139) IS<is> rvalue(151) END<end> FUNCTION<function> 
+definitions(153) :: function_definition(152) 
+opt_definitions(154) :: opt_definitions(135) definitions(153) 
+empty(155) :: 
+opt_formals(156) :: empty(155) 
+empty(157) :: 
+opt_var_defs(158) :: empty(157) 
+atom(159) :: IDENT<aa> APOSTROPHE<'> IDENT<year> 
+factor(160) :: atom(159) 
+term(161) :: factor(160) 
+simple_expr(162) :: term(161) 
+expression(163) :: simple_expr(162) 
+atom(164) :: IDENT<aa> 
+factor(165) :: atom(164) 
+term(166) :: factor(165) 
+simple_expr(167) :: term(166) 
+expression(168) :: simple_expr(167) 
+relation_op(169) :: EQ<=> 
+atom(170) :: INT_LITERAL<7> 
+factor(171) :: atom(170) 
+term(172) :: factor(171) 
+simple_expr(173) :: term(172) 
+expression(174) :: expression(168) relation_op(169) simple_expr(173) 
+atom(175) :: IDENT<aa> APOSTROPHE<'> IDENT<day> 
+factor(176) :: atom(175) 
+term(177) :: factor(176) 
+simple_expr(178) :: term(177) 
+expression(179) :: simple_expr(178) 
+unless_expression(180) :: DO<do> expression(163) UNLESS<unless> expression(174) OTHERWISE<otherwise> expression(179) DONE<done> 
+rvalue(181) :: unless_expression(180) 
+function_definition(182) :: FUNCTION<function> FUNC_IDENT<Aa> LCURLY<{> opt_formals(156) RCURLY<}> RETURN<return> IDENT<int> opt_var_defs(158) IS<is> rvalue(181) END<end> FUNCTION<function> 
+definitions(183) :: function_definition(182) 
+opt_definitions(184) :: opt_definitions(154) definitions(183) 
+atom(185) :: INT_LITERAL<0> 
+factor(186) :: atom(185) 
+term(187) :: factor(186) 
+simple_expr(188) :: term(187) 
+expression(189) :: simple_expr(188) 
+statement(190) :: RETURN<return> expression(189) 
+statement_list(191) :: statement(190) 
+program(192) :: opt_definitions(184) statement_list(191) 
+syntax OK

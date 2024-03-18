@@ -1,0 +1,155 @@
+empty(1) :: 
+opt_definitions(2) :: empty(1) 
+formal_arg(3) :: IDENT<aa> LSQUARE<[> IDENT<int> RSQUARE<]> 
+formals(4) :: formal_arg(3) 
+opt_formals(5) :: formals(4) 
+empty(6) :: 
+opt_return_type(7) :: empty(6) 
+empty(8) :: 
+opt_var_defs(9) :: empty(8) 
+lvalue(10) :: IDENT<aa> 
+atom(11) :: INT_LITERAL<7> 
+factor(12) :: atom(11) 
+term(13) :: factor(12) 
+simple_expr(14) :: term(13) 
+expression(15) :: simple_expr(14) 
+rvalue(16) :: expression(15) 
+assignment(17) :: lvalue(10) EQ<=> rvalue(16) 
+statement(18) :: assignment(17) 
+atom(19) :: IDENT<aa> 
+factor(20) :: atom(19) 
+term(21) :: factor(20) 
+simple_expr(22) :: term(21) 
+expression(23) :: simple_expr(22) 
+args(24) :: expression(23) 
+opt_args(25) :: args(24) 
+procedure_call(26) :: PROC_IDENT<CALL> LPAREN<(> opt_args(25) RPAREN<)> 
+statement(27) :: procedure_call(26) 
+statement_list(28) :: statement(27) 
+atom(29) :: IDENT<aa> 
+factor(30) :: atom(29) 
+term(31) :: factor(30) 
+simple_expr(32) :: term(31) 
+expression(33) :: simple_expr(32) 
+relation_op(34) :: LT<<> 
+atom(35) :: INT_LITERAL<5> 
+factor(36) :: atom(35) 
+term(37) :: factor(36) 
+simple_expr(38) :: term(37) 
+expression(39) :: expression(33) relation_op(34) simple_expr(38) 
+atom(40) :: IDENT<aa> 
+factor(41) :: atom(40) 
+term(42) :: factor(41) 
+simple_expr(43) :: term(42) 
+add_or_minus(44) :: MINUS<-> 
+atom(45) :: INT_LITERAL<5> 
+factor(46) :: atom(45) 
+term(47) :: factor(46) 
+simple_expr(48) :: simple_expr(43) add_or_minus(44) term(47) 
+expression(49) :: simple_expr(48) 
+args(50) :: expression(49) 
+opt_args(51) :: args(50) 
+procedure_call(52) :: PROC_IDENT<CALL> LPAREN<(> opt_args(51) RPAREN<)> 
+statement(53) :: procedure_call(52) 
+statement_list(54) :: statement(53) 
+opt_otherwise(55) :: OTHERWISE<otherwise> statement_list(54) 
+unless_statement(56) :: DO<do> statement_list(28) UNLESS<unless> expression(39) opt_otherwise(55) DONE<done> 
+statement(57) :: unless_statement(56) 
+statement_list(58) :: statement(57) 
+atom(59) :: IDENT<aa> 
+factor(60) :: atom(59) 
+term(61) :: factor(60) 
+simple_expr(62) :: term(61) 
+expression(63) :: simple_expr(62) 
+relation_op(64) :: LT<<> 
+atom(65) :: INT_LITERAL<10> 
+factor(66) :: atom(65) 
+term(67) :: factor(66) 
+simple_expr(68) :: term(67) 
+expression(69) :: expression(63) relation_op(64) simple_expr(68) 
+empty(70) :: 
+opt_otherwise(71) :: empty(70) 
+unless_statement(72) :: DO<do> statement_list(58) UNLESS<unless> expression(69) opt_otherwise(71) DONE<done> 
+statement(73) :: unless_statement(72) 
+statement_list(74) :: statement(73) 
+statement_list(75) :: statement(18) COMMA<,> statement_list(74) 
+procedure_definition(76) :: PROCEDURE<procedure> PROC_IDENT<PROKKI> LCURLY<{> opt_formals(5) RCURLY<}> opt_return_type(7) opt_var_defs(9) IS<is> statement_list(75) END<end> PROCEDURE<procedure> 
+definitions(77) :: procedure_definition(76) 
+opt_definitions(78) :: opt_definitions(2) definitions(77) 
+empty(79) :: 
+opt_formals(80) :: empty(79) 
+opt_return_type(81) :: RETURN<return> IDENT<int> 
+atom(82) :: INT_LITERAL<10> 
+factor(83) :: atom(82) 
+term(84) :: factor(83) 
+simple_expr(85) :: term(84) 
+expression(86) :: simple_expr(85) 
+variable_definition(87) :: VAR<var> IDENT<bb> EQ<=> expression(86) 
+var_def_list(88) :: variable_definition(87) 
+empty(89) :: 
+opt_args(90) :: empty(89) 
+function_call(91) :: FUNC_IDENT<Today> LPAREN<(> opt_args(90) RPAREN<)> 
+atom(92) :: function_call(91) 
+factor(93) :: atom(92) 
+term(94) :: factor(93) 
+simple_expr(95) :: term(94) 
+expression(96) :: simple_expr(95) 
+variable_definition(97) :: VAR<var> IDENT<bc> EQ<=> expression(96) 
+var_def_list(98) :: var_def_list(88) variable_definition(97) 
+opt_var_defs(99) :: var_def_list(98) 
+atom(100) :: IDENT<bb> 
+factor(101) :: atom(100) 
+term(102) :: factor(101) 
+simple_expr(103) :: term(102) 
+expression(104) :: simple_expr(103) 
+statement(105) :: RETURN<return> expression(104) 
+statement_list(106) :: statement(105) 
+atom(107) :: IDENT<bc> APOSTROPHE<'> IDENT<month> 
+factor(108) :: atom(107) 
+term(109) :: factor(108) 
+simple_expr(110) :: term(109) 
+expression(111) :: simple_expr(110) 
+relation_op(112) :: LT<<> 
+atom(113) :: IDENT<bb> 
+factor(114) :: atom(113) 
+term(115) :: factor(114) 
+simple_expr(116) :: term(115) 
+expression(117) :: expression(111) relation_op(112) simple_expr(116) 
+atom(118) :: IDENT<bc> APOSTROPHE<'> IDENT<day> 
+factor(119) :: atom(118) 
+term(120) :: factor(119) 
+simple_expr(121) :: term(120) 
+expression(122) :: simple_expr(121) 
+statement(123) :: RETURN<return> expression(122) 
+statement_list(124) :: statement(123) 
+opt_otherwise(125) :: OTHERWISE<otherwise> statement_list(124) 
+unless_statement(126) :: DO<do> statement_list(106) UNLESS<unless> expression(117) opt_otherwise(125) DONE<done> 
+statement(127) :: unless_statement(126) 
+statement_list(128) :: statement(127) 
+procedure_definition(129) :: PROCEDURE<procedure> PROC_IDENT<PROG> LCURLY<{> opt_formals(80) RCURLY<}> opt_return_type(81) opt_var_defs(99) IS<is> statement_list(128) END<end> PROCEDURE<procedure> 
+definitions(130) :: procedure_definition(129) 
+opt_definitions(131) :: opt_definitions(78) definitions(130) 
+atom(132) :: INT_LITERAL<5> 
+factor(133) :: atom(132) 
+term(134) :: factor(133) 
+simple_expr(135) :: term(134) 
+expression(136) :: simple_expr(135) 
+args(137) :: expression(136) 
+opt_args(138) :: args(137) 
+procedure_call(139) :: PROC_IDENT<PROKKI> LPAREN<(> opt_args(138) RPAREN<)> 
+statement(140) :: procedure_call(139) 
+atom(141) :: INT_LITERAL<0> 
+factor(142) :: atom(141) 
+term(143) :: factor(142) 
+simple_expr(144) :: term(143) 
+expression(145) :: simple_expr(144) 
+atom(146) :: LPAREN<(> expression(145) RPAREN<)> 
+factor(147) :: atom(146) 
+term(148) :: factor(147) 
+simple_expr(149) :: term(148) 
+expression(150) :: simple_expr(149) 
+statement(151) :: RETURN<return> expression(150) 
+statement_list(152) :: statement(151) 
+statement_list(153) :: statement(140) COMMA<,> statement_list(152) 
+program(154) :: opt_definitions(131) statement_list(153) 
+syntax OK

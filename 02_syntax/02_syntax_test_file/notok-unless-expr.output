@@ -1,0 +1,94 @@
+empty(1) :: 
+opt_definitions(2) :: empty(1) 
+lvalue(3) :: IDENT<aa> 
+atom(4) :: INT_LITERAL<24> 
+factor(5) :: atom(4) 
+term(6) :: factor(5) 
+simple_expr(7) :: term(6) 
+expression(8) :: simple_expr(7) 
+rvalue(9) :: expression(8) 
+assignment(10) :: lvalue(3) EQ<=> rvalue(9) 
+statement(11) :: assignment(10) 
+statement_list(12) :: statement(11) 
+atom(13) :: INT_LITERAL<7> 
+factor(14) :: atom(13) 
+term(15) :: factor(14) 
+simple_expr(16) :: term(15) 
+expression(17) :: simple_expr(16) 
+relation_op(18) :: LT<<> 
+atom(19) :: INT_LITERAL<10> 
+factor(20) :: atom(19) 
+term(21) :: factor(20) 
+simple_expr(22) :: term(21) 
+expression(23) :: expression(17) relation_op(18) simple_expr(22) 
+lvalue(24) :: IDENT<aa> 
+atom(25) :: INT_LITERAL<3> 
+factor(26) :: atom(25) 
+term(27) :: factor(26) 
+simple_expr(28) :: term(27) 
+expression(29) :: simple_expr(28) 
+rvalue(30) :: expression(29) 
+assignment(31) :: lvalue(24) EQ<=> rvalue(30) 
+statement(32) :: assignment(31) 
+statement_list(33) :: statement(32) 
+opt_otherwise(34) :: OTHERWISE<otherwise> statement_list(33) 
+unless_statement(35) :: DO<do> statement_list(12) UNLESS<unless> expression(23) opt_otherwise(34) DONE<done> 
+statement(36) :: unless_statement(35) 
+statement_list(37) :: statement(36) 
+atom(38) :: INT_LITERAL<1> 
+factor(39) :: atom(38) 
+term(40) :: factor(39) 
+simple_expr(41) :: term(40) 
+expression(42) :: simple_expr(41) 
+relation_op(43) :: LT<<> 
+atom(44) :: INT_LITERAL<8> 
+factor(45) :: atom(44) 
+term(46) :: factor(45) 
+simple_expr(47) :: term(46) 
+expression(48) :: expression(42) relation_op(43) simple_expr(47) 
+lvalue(49) :: IDENT<aa> 
+atom(50) :: INT_LITERAL<9> 
+factor(51) :: atom(50) 
+term(52) :: factor(51) 
+simple_expr(53) :: term(52) 
+expression(54) :: simple_expr(53) 
+rvalue(55) :: expression(54) 
+assignment(56) :: lvalue(49) EQ<=> rvalue(55) 
+statement(57) :: assignment(56) 
+statement_list(58) :: statement(57) 
+opt_otherwise(59) :: OTHERWISE<otherwise> statement_list(58) 
+unless_statement(60) :: DO<do> statement_list(37) UNLESS<unless> expression(48) opt_otherwise(59) DONE<done> 
+statement(61) :: unless_statement(60) 
+lvalue(62) :: IDENT<wappu> DOT<.> IDENT<year> 
+atom(63) :: INT_LITERAL<24> 
+factor(64) :: atom(63) 
+term(65) :: factor(64) 
+simple_expr(66) :: term(65) 
+expression(67) :: simple_expr(66) 
+atom(68) :: IDENT<wappu> APOSTROPHE<'> IDENT<year> 
+factor(69) :: atom(68) 
+term(70) :: factor(69) 
+simple_expr(71) :: term(70) 
+expression(72) :: simple_expr(71) 
+relation_op(73) :: LT<<> 
+atom(74) :: INT_LITERAL<100> 
+factor(75) :: atom(74) 
+term(76) :: factor(75) 
+simple_expr(77) :: term(76) 
+expression(78) :: expression(72) relation_op(73) simple_expr(77) 
+atom(79) :: INT_LITERAL<100> 
+factor(80) :: atom(79) 
+term(81) :: factor(80) 
+simple_expr(82) :: term(81) 
+add_or_minus(83) :: PLUS<+> 
+atom(84) :: INT_LITERAL<400> 
+factor(85) :: atom(84) 
+term(86) :: factor(85) 
+simple_expr(87) :: simple_expr(82) add_or_minus(83) term(86) 
+expression(88) :: simple_expr(87) 
+unless_expression(89) :: DO<do> expression(67) UNLESS<unless> expression(78) OTHERWISE<otherwise> expression(88) DONE<done> 
+rvalue(90) :: unless_expression(89) 
+assignment(91) :: lvalue(62) EQ<=> rvalue(90) 
+statement(92) :: assignment(91) 
+lvalue(93) :: IDENT<notwappu> 
+8:Syntax Error (token: 'do')

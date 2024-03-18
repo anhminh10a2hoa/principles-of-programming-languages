@@ -1,0 +1,11 @@
+empty(1) :: 
+opt_definitions(2) :: empty(1) 
+atom(3) :: DATE_LITERAL<2024-05-01> 
+factor(4) :: atom(3) 
+term(5) :: factor(4) 
+simple_expr(6) :: term(5) 
+expression(7) :: simple_expr(6) 
+variable_definition(8) :: VAR<var> IDENT<wappu> EQ<=> expression(7) 
+definitions(9) :: variable_definition(8) 
+opt_definitions(10) :: opt_definitions(2) definitions(9) 
+2:Syntax Error (token: '1.5.2024')

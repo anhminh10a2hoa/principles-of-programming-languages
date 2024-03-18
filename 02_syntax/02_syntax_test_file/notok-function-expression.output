@@ -1,0 +1,7 @@
+empty(1) :: 
+opt_definitions(2) :: empty(1) 
+empty(3) :: 
+opt_formals(4) :: empty(3) 
+empty(5) :: 
+opt_var_defs(6) :: empty(5) 
+4:Syntax Error (token: 'end')
